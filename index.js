@@ -20,6 +20,8 @@ client.once('ready', () => {
 });
 
 client.on('guildMemberRemove', async member => {
+	if (member.user.bot) { return; }
+
 	try {
 		const guild = member.guild;
 		const cache = guild.channels.cache.filter(channel => channel.type === 'GUILD_TEXT');
